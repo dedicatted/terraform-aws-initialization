@@ -37,7 +37,7 @@ terraform {
     }
 }
 ```
-Example for deploying AWS SNS topic and storing Terraform state in S3 bucket:
+Example for deploying AWS SNS topic and storing Terraform state in S3 bucket and DynamoDB Table to use for state locking and consistency:
 
 ```hcl
 provider "aws" {
@@ -49,9 +49,9 @@ terraform {
     bucket         = "tf-state-<account-id>"
     key            = "terraform.tfstate"
     region         = "<region>"
-    encrypt        = true
+    encrypt        = true 
     dynamodb_table = "<dynamodb-name>"
-    }
+  }
 }
 
 resource "aws_sns_topic" "topic" {
