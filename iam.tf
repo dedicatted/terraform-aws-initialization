@@ -1,5 +1,5 @@
 resource "aws_iam_user" "terraform_admin_user" {
-  name = var.terraform_user
+  name = "${var.terraform_user}-${random_string.suffix.result}"
 }
 
 resource "aws_iam_user_policy_attachment" "terraform_admin_attachment" {

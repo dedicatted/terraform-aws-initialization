@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform_state_bucket" {
-  bucket = "${var.bucket_name}-${data.aws_caller_identity.current.account_id}"
+  bucket = "${var.bucket_name}-${random_string.suffix.result}"
 
   lifecycle {
     prevent_destroy = false

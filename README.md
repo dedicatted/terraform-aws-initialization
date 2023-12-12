@@ -29,11 +29,11 @@ To use created infrastructure in your workloads take the value of `"backend_conf
 ```hcl
 terraform {
   backend "s3" {
-    bucket         = "tf-state-<account-id>"
+    bucket         = "tf-state-<random-prefix>"
     key            = "terraform.tfstate"
     region         = "<region>"
     encrypt        = true
-    dynamodb_table = "<dynamodb-name>"
+    dynamodb_table = "<dynamodb-name>-<random-prefix>"
     }
 }
 ```
@@ -46,11 +46,11 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket         = "tf-state-<account-id>"
+    bucket         = "tf-state-<random-prefix>"
     key            = "terraform.tfstate"
     region         = "<region>"
     encrypt        = true 
-    dynamodb_table = "<dynamodb-name>"
+    dynamodb_table = "<dynamodb-name>-<random-prefix>"
   }
 }
 
@@ -71,6 +71,7 @@ resource "aws_sns_topic" "topic" {
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 5.30.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.6.0 |
 
 ## Modules
 
@@ -90,6 +91,7 @@ No modules.
 | [aws_s3_bucket_versioning.s3_versioning](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_versioning) | resource |
 | [aws_secretsmanager_secret.terraform_admin_secrets](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret) | resource |
 | [aws_secretsmanager_secret_version.terraform_admin_secret_version](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/secretsmanager_secret_version) | resource |
+| [random_string.suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 
 ## Inputs
@@ -114,3 +116,4 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_backend_configuration"></a> [backend\_configuration](#output\_backend\_configuration) | n/a |
+| <a name="output_generated_secret_name"></a> [generated\_secret\_name](#output\_generated\_secret\_name) | n/a |
