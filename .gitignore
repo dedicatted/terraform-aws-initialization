@@ -1,0 +1,11 @@
+# Terraform
+*.tfstate
+*.tfstate.backup
+*.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+
+#Go
+go.mod
+go.sum
